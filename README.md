@@ -1,6 +1,6 @@
 [![Release](https://jitpack.io/v/ashLikun/RxLife.svg)](https://jitpack.io/#ashLikun/RxLife)
 
-RxLife项目简介
+## RxLife项目简介
    [RxLife](https://github.com/ashLikun/RxLife)，相较于[trello/RxLifecycle](https://github.com/trello/RxLifecycle)、[uber/AutoDispose](https://github.com/uber/AutoDispose)，具有如下优势：
    
     * 直接支持在主线程回调
@@ -26,14 +26,12 @@ dependencies {
 }
 ```
 
-#Usage
-
 ### 1、Activity/Fragment
 Activity/Fragment销毁时，自动关闭RxJava管道
 
 ```java
 Observable.timer(5, TimeUnit.SECONDS)
-    .as(RxLife.as(this))     //此时的this Activity/Fragment对象
+    .as(RxLife.life(this))     //此时的this Activity/Fragment对象
     .subscribe(aLong -> {
         Log.e("LJX", "accept =" + aLong);
     });
@@ -43,7 +41,7 @@ Observable.timer(5, TimeUnit.SECONDS)
 View被移除时，自动关闭RxJava管道
 ```java
 Observable.timer(5, TimeUnit.SECONDS)
-    .as(RxLife.as(this))  //此时的this 为View对象
+    .as(RxLife.life(this))  //此时的this 为View对象
     .subscribe(aLong -> {
         Log.e("LJX", "accept =" + aLong);
     });
@@ -59,7 +57,7 @@ public class MyViewModel extends ScopeViewModel {
     public MyViewModel(@NonNull Application application) {
         super(application);
         Observable.interval(1, 1, TimeUnit.SECONDS)
-            .as(RxLife.asOnMain(this))
+            .as(RxLife.lifeOnMain(this))
             .subscribe(aLong -> {
                 Log.e("LJX", "MyViewModel aLong=" + aLong);
             });
