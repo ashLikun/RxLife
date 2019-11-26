@@ -1,16 +1,4 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ashlikun.rxlife">
-    <application>
-        <!--7.0 url的获取-->
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.Provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/files_paths" />
-        </provider>
-    </application>
 
 </manifest>
