@@ -20,6 +20,7 @@ android {
     }
     //java8
     compileOptions {
+        kotlinOptions.freeCompilerArgs += ['-module-name', rootProject.ext.applicationId]
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -39,7 +40,7 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     compileOnly rootProject.ext.designVersion
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     compileOnly rootProject.ext.rxjava
     compileOnly rootProject.ext.rxandroid
 }
