@@ -25,7 +25,6 @@ task clean(type: Delete) {
     delete rootProject.buildDir
 }
 ext {
-    applicationId = "com.ashlikun.rxlife"
     superVersion = "1.0.0-beta01"
     compileSdkVersion = 28
     buildToolsVersion = "28.0.3"
